@@ -12,8 +12,15 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
-sales = SHEET.worksheet('Feuille 1')
+def get_user_name():
+    """
+    """
+    data_str = input('Please enter your username: \n')
+    print(f"Welcome to Rock Paper Scissors, {data_str}")
 
-data = sales.get_all_values()
+get_user_name()
 
-print(data)
+#worksheet = SHEET.add_worksheet(title="A", rows=100, cols=20)
+
+
+
