@@ -17,10 +17,11 @@ def get_user_name():
     """
     data_str = input('Please enter your username: \n')
     print(f"Welcome to Rock Paper Scissors, {data_str}")
+    worksheet = SHEET.add_worksheet(title=data_str, rows=100, cols=20)
 
 get_user_name()
 
-#worksheet = SHEET.add_worksheet(title="A", rows=100, cols=20)
+
 
 
 
