@@ -13,15 +13,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
-#def get_user_name():
-    #"""
-    #Get the username from the user and creates a worksheet for each new user
-    #"""
-    #data_str = input('Please enter your username: \n')
-    #print(f"Welcome to Rock Paper Scissors, {data_str}")
-    #worksheet = SHEET.add_worksheet(title=data_str, rows=100, cols=20)
 
-#get_user_name()
+def get_user_name():
+    global data_str
+    #Get the username from the user and creates a worksheet for each new user
+    data_str = input('Please enter your username: \n')
+    print(f"Welcome to Rock Paper Scissors, {data_str}")
+    worksheet = SHEET.add_worksheet(title=data_str, rows=1, cols=2)
+    score = [0 ,0]
+    SHEET.worksheet(data_str).append_row(score) #Set the score to 0 - 0
+
+get_user_name()
+
 
 def get_user_answer():
     global user
@@ -44,7 +47,7 @@ def get_computer_answer():
 def play_game(user, computer):
     if user == computer:
         print()
-        print('Its a tie')
+        print("It's a tie")
         print()
         play_again()
 
@@ -52,12 +55,14 @@ def play_game(user, computer):
         print()
         print('You won')
         print()
+        increment_user_score(data_str)
         play_again()
 
     else:
         print()
         print('You lost')
         print()
+        increment_computer_score(data_str)
         play_again()
 
 def play_again():
@@ -77,10 +82,19 @@ def play_again():
         print("Your input is incorrect, please choose Y for yes or N for no")
         play_again()
 
+def increment_user_score(data_str): 
+    new_score = [1, 0]
+    update_score = SHEET.worksheet(data_str).append_row(new_score)
+
+def increment_computer_score(data_str): 
+    new_score = [0, 1]
+    update_score = SHEET.worksheet(data_str).append_row(new_score)
+  
+
 get_user_answer()
 get_computer_answer()
 play_game(user, computer)
-
+increment_user_score(data_str)
 
     
 
