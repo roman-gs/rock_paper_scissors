@@ -29,8 +29,10 @@ def get_user_answer():
     choice_strip = choice.strip()
     user = choice_strip.lower()
     if user == "rock" or user == "paper" or user == "scissors":
+        print()
         print(f'You chose {user}')
     else:
+        print()
         print("Your input is incorrect...")
         get_user_answer()
         
@@ -41,17 +43,44 @@ def get_computer_answer():
 
 def play_game(user, computer):
     if user == computer:
+        print()
         print('Its a tie')
+        print()
+        play_again()
 
     if (user == 'rock' and computer == 'scissors') or (user == 'paper' and computer == 'rock') or (user == 'scissors' and computer == 'paper'):
+        print()
         print('You won')
+        print()
+        play_again()
 
     else:
+        print()
         print('You lost')
+        print()
+        play_again()
+
+def play_again():
+    answer = input("Do you want to keep playing? Y or N...\n")
+    answer_strip = answer.strip()
+    answer_lower = answer_strip.lower()
+    if answer_lower == "n":
+        quit()
+
+    if answer_lower == "y":
+        get_user_answer()
+        get_computer_answer()
+        play_game(user, computer)
+    
+    else:
+        print()
+        print("Your input is incorrect, please choose Y for yes or N for no")
+        play_again()
 
 get_user_answer()
 get_computer_answer()
 play_game(user, computer)
+
 
     
 
