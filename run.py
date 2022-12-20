@@ -24,20 +24,35 @@ SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 #get_user_name()
 
 def get_user_answer():
-    user = input('Please choose from rock, paper, or scissors: ')
-    answer_strip = user.strip()
-    answer_lower = answer_strip.lower()
-    if answer_lower == "rock" or answer_lower == "paper" or answer_lower == "scissors":
-        print(f'You chose {answer_lower}')
+    global user
+    choice = input('Please choose from rock, paper, or scissors: ')
+    choice_strip = choice.strip()
+    user = choice_strip.lower()
+    if user == "rock" or user == "paper" or user == "scissors":
+        print(f'You chose {user}')
     else:
         print("Your input is incorrect...")
         get_user_answer()
         
 def get_computer_answer():
+    global computer
     computer = random.choice(["rock", "paper", "scissors"])
     print(f'Your opponent chose {computer}')
 
+def play_game(user, computer):
+    if user == computer:
+        print('Its a tie')
+
+    if (user == 'rock' and computer == 'scissors') or (user == 'paper' and computer == 'rock') or (user == 'scissors' and computer == 'paper'):
+        print('You won')
+
+    else:
+        print('You lost')
+
 get_user_answer()
 get_computer_answer()
+play_game(user, computer)
+
+    
 
 
