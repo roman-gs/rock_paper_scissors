@@ -23,13 +23,19 @@ SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
 #get_user_name()
 
-user = input('Choose from Rock, Paper, or Scissors: ')
-computer = random.choice(["Rock", "Paper", "Scissors"])
+def get_user_answer():
+    user = input('Please choose from Rock, Paper, or Scissors: ')
+    if user == "Rock" or user == "Paper" or user == "Scissors":
+        print(f'You chose {user}')
+    else:
+        print("Your input is incorrect...")
+        get_user_answer()
+        
+def get_computer_answer():
+    computer = random.choice(["Rock", "Paper", "Scissors"])
+    print(f'Your opponent chose {computer}')
 
-print(user)
-print(computer)
-
-
-
+get_user_answer()
+get_computer_answer()
 
 
