@@ -25,12 +25,12 @@ def get_user_name(): #Get the username from the user and creates a worksheet for
 get_user_name()
 
 
-def get_user_answer():
+def get_user_answer(): # Ask for the user choice
     global user
     choice = input('Please choose from rock, paper, or scissors: ')
     choice_strip = choice.strip()
     user = choice_strip.lower()
-    if user == "rock" or user == "paper" or user == "scissors":
+    if user == "rock" or user == "paper" or user == "scissors": # Validate the user choice
         print()
         print(f'You chose {user}')
     else:
@@ -38,16 +38,17 @@ def get_user_answer():
         print("Your input is incorrect...")
         get_user_answer()
         
-def get_computer_answer():
+def get_computer_answer(): # Generate random computer choice
     global computer
     computer = random.choice(["rock", "paper", "scissors"])
     print(f'Your opponent chose {computer}')
 
-def play_game(user, computer):
+def play_game(user, computer): # Compare the user and the computer choices
     if user == computer:
         print()
         print("It's a tie")
         print()
+        calculate_user_score(data_str)
         play_again()
 
     if (user == 'rock' and computer == 'scissors') or (user == 'paper' and computer == 'rock') or (user == 'scissors' and computer == 'paper'):
@@ -55,6 +56,7 @@ def play_game(user, computer):
         print('You won')
         print()
         increment_user_score(data_str)
+        calculate_user_score(data_str)
         play_again()
 
     else:
@@ -62,10 +64,11 @@ def play_game(user, computer):
         print('You lost')
         print()
         increment_computer_score(data_str)
+        calculate_user_score(data_str)
         play_again()
 
-def play_again():
-    answer = input("Do you want to keep playing? Y or N...\n")
+def play_again(): # Allow the user to exit the program or keep playing after each result
+    answer = input("Do you want to keep playing? y or n ...\n")
     answer_strip = answer.strip()
     answer_lower = answer_strip.lower()
     if answer_lower == "n":
@@ -81,14 +84,19 @@ def play_again():
         print("Your input is incorrect, please choose Y for yes or N for no")
         play_again()
 
-def increment_user_score(data_str): 
+def increment_user_score(data_str): # Increment the user score by 1
     new_score = [1, 0]
     update_score = SHEET.worksheet(data_str).append_row(new_score)
 
-def increment_computer_score(data_str): 
+def increment_computer_score(data_str): # Increment the computer score by 1
     new_score = [0, 1]
     update_score = SHEET.worksheet(data_str).append_row(new_score)
-  
+
+def calculate_user_score(data_str):
+    current_score = SHEET.worksheet(data_str).col_values(1)
+    current_score_int = [eval(i) for i in current_score] # Convert str in the "current_score" list to int
+    user_score = sum(current_score_int)
+    print(fuser_score)
 
 get_user_answer()
 get_computer_answer()
