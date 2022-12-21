@@ -48,7 +48,7 @@ def play_game(user, computer): # Compare the user and the computer choices
         print()
         print("It's a tie")
         print()
-        calculate_user_score(data_str)
+        calculate_score(data_str)
         play_again()
 
     if (user == 'rock' and computer == 'scissors') or (user == 'paper' and computer == 'rock') or (user == 'scissors' and computer == 'paper'):
@@ -56,7 +56,7 @@ def play_game(user, computer): # Compare the user and the computer choices
         print('You won')
         print()
         increment_user_score(data_str)
-        calculate_user_score(data_str)
+        calculate_score(data_str)
         play_again()
 
     else:
@@ -64,7 +64,7 @@ def play_game(user, computer): # Compare the user and the computer choices
         print('You lost')
         print()
         increment_computer_score(data_str)
-        calculate_user_score(data_str)
+        calculate_score(data_str)
         play_again()
 
 def play_again(): # Allow the user to exit the program or keep playing after each result
@@ -92,11 +92,16 @@ def increment_computer_score(data_str): # Increment the computer score by 1
     new_score = [0, 1]
     update_score = SHEET.worksheet(data_str).append_row(new_score)
 
-def calculate_user_score(data_str):
-    current_score = SHEET.worksheet(data_str).col_values(1)
-    current_score_int = [eval(i) for i in current_score] # Convert str in the "current_score" list to int
-    user_score = sum(current_score_int)
-    print(fuser_score)
+def calculate_score(data_str): # Calculate the user and computer score
+    current_user_score = SHEET.worksheet(data_str).col_values(1)
+    current_user_score_int = [eval(i) for i in current_user_score] # Convert str in the "current_user_score" list to int
+    user_score = sum(current_user_score_int)
+
+    current_computer_score = SHEET.worksheet(data_str).col_values(2)
+    current_computer_score_int = [eval(i) for i in current_computer_score] 
+    computer_score = sum(current_computer_score_int)
+
+    print(f'Score is: {data_str}: {user_score}, computer: {computer_score} \n')
 
 get_user_answer()
 get_computer_answer()
