@@ -23,13 +23,13 @@ def get_user_name():
     DATA_STR = input('Please enter your username: \n')
     if len(DATA_STR.strip()) == 0:
         print("Your username should have at least one character")
-        get_user_name()
+        main()
     else:
         try:
             worksheet = SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
         except:
             print("This username is already taken, please pick a different one")
-            get_user_name()
+            main()
 
     print(f"Welcome to Rock Paper Scissors, {DATA_STR}\n")
     print("The rules are as follow:\n")
