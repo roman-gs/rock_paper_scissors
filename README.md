@@ -23,8 +23,66 @@ The user is asked if they want to play again and can communicate their decision 
 
 ## FEATURES
 
-- The program asks the user for a unique username:
-![username-image](/assets/readme-images/username.jpg)
+### Playing the game:
 
-- The program welcomes the new user, displays the rules and ask the user to pick one of the three options:
-![options-image](/assets/readme-images/options.jpg)
+- The program asks the user for a unique username.
+
+![username-image](/assets/readme-images/username.png)
+
+- The program welcomes the new user, displays the rules and ask the user to pick one of the three options.
+
+![options-image](/assets/readme-images/options.png)
+
+- The program generates the computer's choice, compares it to the user's choice and return the result of the game.
+- The program calculates, updates and prints the score to terminal
+- The program ask the user if they wish to play again 
+
+![results-image](/assets/readme-images/results.png)
+
+### User input validation:
+
+- The user cannot input an empty username.
+
+![empty-image](/assets/readme-images/empty.png)
+
+- The user cannot input an existing username.
+- If they do, they are prompted to choose another username.
+
+![taken-image](/assets/readme-images/taken.png)
+
+- The user cannot input a choice other than "rock", "paper" or "scissors"
+- Any space is removed before and after the user's choice
+- User's input is automatically converted to lowercase
+
+![results-image](/assets/readme-images/results.jpg)
+
+## DATA MODEL
+
+## TESTING
+
+### Bugs:
+
+- ### Solved bugs:  
+
+    - Entering a blank username was crashing the program since a worksheet couldn't be created. I was able to fix it by adding extra validation preventing the user from submitting a blank username or a username composed only by spaces.
+
+    - Entering an existing username was crashing the program since two worksheets cannot have the same name in Google sheets. I was able to fix it by adding an exception handler prompting the user to pick a different username. 
+
+- ### Remaining bugs:  
+
+    - No remaining bugs
+
+- ### Validator testing:
+
+    - PEP8
+        - No errors were returned on https://www.pythonchecker.com/ 
+
+## DEPLOYMENT
+
+This project was deployed using ...
+
+    - Steps for deployment:
+
+## CREDITS
+
+    - 
