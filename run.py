@@ -14,14 +14,13 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
 
-def get_user_name():
+def get_user_name(): #Get the username from the user and creates a worksheet for each new user
     global data_str
-    #Get the username from the user and creates a worksheet for each new user
     data_str = input('Please enter your username: \n')
     print(f"Welcome to Rock Paper Scissors, {data_str}")
     worksheet = SHEET.add_worksheet(title=data_str, rows=1, cols=2)
-    score = [0 ,0]
-    SHEET.worksheet(data_str).append_row(score) #Set the score to 0 - 0
+    score = [0 ,0] #Set the score to 0 - 0
+    SHEET.worksheet(data_str).append_row(score) 
 
 get_user_name()
 
@@ -94,7 +93,7 @@ def increment_computer_score(data_str):
 get_user_answer()
 get_computer_answer()
 play_game(user, computer)
-increment_user_score(data_str)
+
 
     
 
