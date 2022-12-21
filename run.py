@@ -26,7 +26,11 @@ def get_user_name():
         print("This username is already taken, please pick a different one")
         get_user_name()
 
-    print(f"Welcome to Rock Paper Scissors, {DATA_STR}")
+    print(f"Welcome to Rock Paper Scissors, {DATA_STR}\n")
+    print("The rules are as follow:\n")
+    print("Rock beats scissors")
+    print("Scissors beats paper")
+    print("Paper beats rock\n")
     score = [0 ,0] #Set the score to 0 - 0
     SHEET.worksheet(DATA_STR).append_row(score) 
 
@@ -126,6 +130,7 @@ def calculate_score(DATA_STR):
     """
     Calculate the user and computer scores
     """
+    print("Calculating score...")
     current_user_score = SHEET.worksheet(DATA_STR).col_values(1)
     #Convert str in the "current_user_score" list to int 
     #Cred: https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/

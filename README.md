@@ -1,31 +1,20 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# ROCK PAPER SCISSORS
 
-Welcome roman-gs,
+Rock Paper Scissors is a Python terminal game, which runs in ...
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The user plays again the computer by choosing between rock, paper and scissors. Their choice is then compared against the computer's random choice and the result is shown. The score is uploaded to an external Google sheet and then printed to terminal. 
 
-## Reminders
+Here is the live version.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## HOW TO PLAY
 
-## Creating the Heroku app
+Rock Paper Scissors is based on the classic Rock Paper Scissors game. You can learn more about it on this wikipedia page. https://en.wikipedia.org/wiki/Rock_paper_scissors 
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+The rules are the following:
+Rock beats scissors
+Scissors beats paper
+Paper beats rock
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The user is first asked to pick a unique username. They then have to make their choice between rock, paper or scissors. The program compares their answer with the computer's randomly generated choice and return whether it's a tie, a win or a loss. 
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+A tie awards no points, a win awards 1 point to the user and a loss awards 1 point to the computer. The score is then displayed to the user.
