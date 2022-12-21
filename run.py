@@ -17,15 +17,20 @@ SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 def get_user_name(): #Get the username from the user and creates a worksheet for each new user
     global data_str
     data_str = input('Please enter your username: \n')
+    try:
+        worksheet = SHEET.add_worksheet(title=data_str, rows=1, cols=2)
+    except:
+        print("This username is already taken, please pick a different one") # Ask the user to pick a different name if name already exits
+        get_user_name()
+
     print(f"Welcome to Rock Paper Scissors, {data_str}")
-    worksheet = SHEET.add_worksheet(title=data_str, rows=1, cols=2)
     score = [0 ,0] #Set the score to 0 - 0
     SHEET.worksheet(data_str).append_row(score) 
 
 get_user_name()
 
 
-def get_user_answer(): # Ask for the user choice
+def get_user_answer(): # Ask the user to make a choice
     global user
     choice = input('Please choose from rock, paper, or scissors: ')
     choice_strip = choice.strip()
@@ -93,7 +98,7 @@ def increment_computer_score(data_str): # Increment the computer score by 1
     update_score = SHEET.worksheet(data_str).append_row(new_score)
 
 def calculate_score(data_str): # Calculate the user and computer score
-    current_user_score = SHEET.worksheet(data_str).col_values(1)
+    current_user_score = SHEET.worksheet(data_str).col_values(1) 
     current_user_score_int = [eval(i) for i in current_user_score] # Convert str in the "current_user_score" list to int
     user_score = sum(current_user_score_int)
 
@@ -101,7 +106,7 @@ def calculate_score(data_str): # Calculate the user and computer score
     current_computer_score_int = [eval(i) for i in current_computer_score] 
     computer_score = sum(current_computer_score_int)
 
-    print(f'Score is: {data_str}: {user_score}, computer: {computer_score} \n')
+    print(f'Score is: {data_str} {user_score}, computer {computer_score} \n')
 
 get_user_answer()
 get_computer_answer()
