@@ -16,15 +16,20 @@ SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
 def get_user_name():
     """
-    Get the username from the user and creates a worksheet for each new user
+    Get the username from the user and creates a worksheet for each new user. 
+    Username is validated and cannot be blank or match an existing username.
     """
     global DATA_STR
     DATA_STR = input('Please enter your username: \n')
-    try:
-        worksheet = SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
-    except NameError():
-        print("This username is already taken, please pick a different one")
+    if len(DATA_STR.strip()) == 0:
+        print("Your username should have at least one character")
         get_user_name()
+    else:
+        try:
+            worksheet = SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
+        except:
+            print("This username is already taken, please pick a different one")
+            get_user_name()
 
     print(f"Welcome to Rock Paper Scissors, {DATA_STR}\n")
     print("The rules are as follow:\n")
