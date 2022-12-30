@@ -102,6 +102,9 @@ def play_again():
     answer_strip = answer.strip()
     answer_lower = answer_strip.lower()
     if answer_lower == "n":
+        print(f'\nThanks for playing "rock paper scissors", {DATA_STR}. \n')
+        print("This app was developed as part of the 3rd module of a Full Stack Software Development course")
+        print("Find my Github repositories here: https://github.com/roman-gs")
         quit()
 
     if answer_lower == "y":
