@@ -36,7 +36,7 @@ def get_user_name():
     print("Rock beats scissors")
     print("Scissors beats paper")
     print("Paper beats rock\n")
-    score = [0 ,0] #Set the score to 0 - 0
+    score = [0,0] #Set the score to 0 - 0
     SHEET.worksheet(DATA_STR).append_row(score) 
 
 
