@@ -16,7 +16,7 @@ SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
 def get_user_name():
     """
-    Get the username from the user and creates a worksheet for each new user. 
+    Get the username from the user and creates a worksheet for each new user.
     Username is validated and cannot be blank or match an existing username.
     """
     global DATA_STR
@@ -26,7 +26,7 @@ def get_user_name():
         main()
     else:
         try:
-            worksheet = SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
+            SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
         except:
             print("This username is already taken, please pick a different one")
             main()
@@ -36,11 +36,12 @@ def get_user_name():
     print("Rock beats scissors")
     print("Scissors beats paper")
     print("Paper beats rock\n")
-    score = [0,0] #Set the score to 0 - 0
-    SHEET.worksheet(DATA_STR).append_row(score) 
+    # Set the score to 0 - 0
+    score = [0, 0]
+    SHEET.worksheet(DATA_STR).append_row(score)
 
 
-def get_user_answer(): 
+def get_user_answer():
     """
     Ask the user to make a choice and validates it
     """
@@ -123,7 +124,7 @@ def increment_user_score(DATA_STR):
     Increment the user score by 1 and the computer score by 0
     """
     new_score = [1, 0]
-    update_score = SHEET.worksheet(DATA_STR).append_row(new_score)
+    SHEET.worksheet(DATA_STR).append_row(new_score)
 
 
 def increment_computer_score(data_str): 
@@ -131,7 +132,7 @@ def increment_computer_score(data_str):
     Increment the computer score by 1 and the user score by 0
     """
     new_score = [0, 1]
-    update_score = SHEET.worksheet(DATA_STR).append_row(new_score)
+    SHEET.worksheet(DATA_STR).append_row(new_score)
 
 
 def calculate_score(DATA_STR):
@@ -140,8 +141,8 @@ def calculate_score(DATA_STR):
     """
     print("Calculating score...")
     current_user_score = SHEET.worksheet(DATA_STR).col_values(1)
-    #Convert str in the "current_user_score" list to int 
-    #Cred: https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/
+    # Convert str in the "current_user_score" list to int 
+    # Cred: https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/
     current_user_score_int = [eval(i) for i in current_user_score]
     user_score = sum(current_user_score_int)
 

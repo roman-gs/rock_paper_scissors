@@ -1,10 +1,12 @@
 # ROCK PAPER SCISSORS
 
-Rock Paper Scissors is a Python terminal game, which runs in ...
+Rock Paper Scissors is a Python terminal game which runs on Heroku.
 
 The user plays again the computer by choosing between rock, paper and scissors. Their choice is then compared against the computer's random choice and the result is shown. The score is uploaded to an external Google sheet and then printed to terminal. 
 
-Here is the live version.
+[Here](https://rock-paper-scissors.herokuapp.com/) is the live version of the "rock paper scissors" app.
+
+![amIresponsive-image](/assets/readme-images/amiresponsive.png)
 
 ## HOW TO PLAY
 
@@ -26,24 +28,28 @@ The user is asked if they want to play again and can communicate their decision 
 ### Playing the game:
 
 - The program asks the user for a unique username.
+- Then welcomes the new user and displays the rules.
+- Then asks the user to pick one of the three options.
 
 ![username-image](/assets/readme-images/username.png)
 
-- The program welcomes the new user, displays the rules and ask the user to pick one of the three options.
-
-![options-image](/assets/readme-images/options.png)
-
-- The program generates the computer's choice, compares it to the user's choice and return the result of the game.
-- The program calculates, updates and prints the score to terminal
-- The program ask the user if they wish to play again 
+- Once the user has made their choice:
+    - The program generates the computer's choice, compares it to the user's choice and return the result of this round.
+    - The program calculates, updates and prints the score to terminal.
+    - The program ask the user if they wish to play another round. 
 
 ![results-image](/assets/readme-images/results.png)
+
+- If the user picks "y", a new round begins
+- If the user picks "n", a thank you message is displayed and terminal exits the program.
+
+![exit-image](/assets/readme-images/exit.png)
 
 ### User input validation:
 
 - The user cannot input an empty username.
 
-![empty-image](/assets/readme-images/empty.png)
+![blank-image](/assets/readme-images/blank.png)
 
 - The user cannot input an existing username.
 - If they do, they are prompted to choose another username.
@@ -51,14 +57,23 @@ The user is asked if they want to play again and can communicate their decision 
 ![taken-image](/assets/readme-images/taken.png)
 
 - The user cannot input a choice other than "rock", "paper" or "scissors"
-- Any space is removed before and after the user's choice
+- Any space is removed before and after the user's input
 - User's input is automatically converted to lowercase
 
-![results-image](/assets/readme-images/results.jpg)
+![incorrect-input-image](/assets/readme-images/input.png)
 
 ## DATA MODEL
 
+The "rock paper scissors" app integrates with Google sheets. 
+The score is uploaded to a worksheet of the connected spreadsheet every time the user or the computer scores a point.
+The score for each player is then summed and printed in terminal after each round.
+
 ## TESTING
+
+ - I have manually tested this project by doing the following:
+    - Passed the code through a PEP8 linter and confirmed there are no problems
+    - Given invalid inputs including blank inputs or existing usernames 
+    - Tested in my local terminal as well as in Heroku terminal
 
 ### Bugs:
 
@@ -70,19 +85,24 @@ The user is asked if they want to play again and can communicate their decision 
 
 - ### Remaining bugs:  
 
-    - No remaining bugs
+    - No remaining bugs.
 
 - ### Validator testing:
 
-    - PEP8
-        - No errors were returned on https://www.pythonchecker.com/ 
+    - PEP8:
+        - No errors were returned on https://www.pythonchecker.com/.
 
 ## DEPLOYMENT
 
-This project was deployed using ...
+This project was deployed using Heroku.
 
-    - Steps for deployment:
+- Steps for deployment:
+    - Fork or clone the repository
+    - Create a new Heroku app
+    - Set the buildbacks to Python and NodeJS in that order
+    - Link the Heroku app to the repository
+    - Click on "Deploy"
 
 ## CREDITS
 
-    - 
+- [https://www.geeksforgeeks.org](https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/)
