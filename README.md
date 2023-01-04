@@ -98,8 +98,22 @@ The score for each player is then read in the worksheet, summed and printed in t
 
 This project was deployed using Heroku.
 
-- Steps for deployment:
-    - Fork or clone the repository
+- Fork or Clone the Repository:
+    - To Fork the Repository:
+        - Log into GitHub and locate the repository
+        - Click on "Fork" in the top right corner
+        - Select "Create Fork"
+
+    - To create a local Clone:
+        - Log into GitHub and locate the repository
+        - Open the "Code" drop-down menu in the top right corner
+        - Copy the URL from under the HTTPS tab
+        - In your IED, open Terminal
+        - Change the current working directory to the location where you want the cloned directory
+        - Type git clone, and then paste the URL you copied earlier
+        - Press "Enter" to create your local clone
+
+- To deploy on Heroku:
     - Create a new Heroku app
     - Set the buildbacks to Python and NodeJS in that order
     - Link the Heroku app to the repository
