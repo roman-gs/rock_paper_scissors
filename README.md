@@ -25,6 +25,10 @@ The user is asked if they want to play again and can communicate their decision 
 
 ## FEATURES
 
+### Chart: 
+
+![chart-image](/assets/readme-images/chart.png)
+
 ### Playing the game:
 
 - The program asks the user for a unique username.
