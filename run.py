@@ -78,7 +78,23 @@ def play_game(USER, COMPUTER):
         calculate_score(DATA_STR)
         play_again()
 
-    if (USER == 'rock' and COMPUTER == 'scissors') or (USER == 'paper' and COMPUTER == 'rock') or (USER == 'scissors' and COMPUTER == 'paper'):
+    if (USER == 'rock' and COMPUTER == 'scissors'):
+        print()
+        print('You won')
+        print()
+        increment_user_score(DATA_STR)
+        calculate_score(DATA_STR)
+        play_again()
+
+    elif (USER == 'paper' and COMPUTER == 'rock'):
+        print()
+        print('You won')
+        print()
+        increment_user_score(DATA_STR)
+        calculate_score(DATA_STR)
+        play_again()
+
+    elif (USER == 'scissors' and COMPUTER == 'paper'):
         print()
         print('You won')
         print()
