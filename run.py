@@ -27,8 +27,8 @@ def get_user_name():
     else:
         try:
             SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
-        except:
-            print("This username is already taken, please pick a different one")
+        except gspread.exceptions.APIError:
+            print("This username is already taken, please pick another one")
             main()
 
     print(f"Welcome to Rock Paper Scissors, {DATA_STR}\n")
@@ -67,7 +67,7 @@ def get_computer_answer():
     print(f'Your opponent chose {COMPUTER}')
 
 
-def play_game(USER, COMPUTER): 
+def play_game(USER, COMPUTER):
     """
     Compare the user and the computer choices
     """
@@ -97,14 +97,15 @@ def play_game(USER, COMPUTER):
 
 def play_again():
     """
-    Allow the user to exit the program or keep playing after each result
+    Allow the user to exit the program or keep playing after each round
     """
     answer = input("Do you want to keep playing? y or n ...\n")
     answer_strip = answer.strip()
     answer_lower = answer_strip.lower()
     if answer_lower == "n":
         print(f'\nThanks for playing "rock paper scissors", {DATA_STR}. \n')
-        print("This app was developed as part of the 3rd module of a Full Stack Software Development course")
+        print("This app was developed as part of the")
+        print("3rd module of a Full Stack Software Development course")
         print("Find my Github repositories here: https://github.com/roman-gs")
         quit()
 
@@ -112,14 +113,14 @@ def play_again():
         get_user_answer()
         get_computer_answer()
         play_game(USER, COMPUTER)
-    
+
     else:
         print()
         print("Your input is incorrect, please choose Y for yes or N for no")
         play_again()
 
 
-def increment_user_score(DATA_STR): 
+def increment_user_score(DATA_STR):
     """
     Increment the user score by 1 and the computer score by 0
     """
@@ -127,7 +128,7 @@ def increment_user_score(DATA_STR):
     SHEET.worksheet(DATA_STR).append_row(new_score)
 
 
-def increment_computer_score(data_str): 
+def increment_computer_score(data_str):
     """
     Increment the computer score by 1 and the user score by 0
     """
@@ -141,8 +142,8 @@ def calculate_score(DATA_STR):
     """
     print("Calculating score...")
     current_user_score = SHEET.worksheet(DATA_STR).col_values(1)
-    # Convert str in the "current_user_score" list to int 
-    # Cred: https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/
+    # Convert str in the "current_user_score" list to int
+    # https://www.geeksforgeeks.org/python-converting-all-strings-in-list-to-integers/
     current_user_score_int = [eval(i) for i in current_user_score]
     user_score = sum(current_user_score_int)
 
