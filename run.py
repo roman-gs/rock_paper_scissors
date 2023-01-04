@@ -28,14 +28,17 @@ def get_user_name():
         try:
             SHEET.add_worksheet(title=DATA_STR, rows=1, cols=2)
         except gspread.exceptions.APIError:
+            print("============================================")
             print("This username is already taken, please pick another one")
             main()
 
-    print(f"Welcome to Rock Paper Scissors, {DATA_STR}\n")
+    print("============================================")
+    print(f"Welcome to Rock Paper Scissors, {DATA_STR}")
+    print("============================================")
     print("The rules are as follow:\n")
     print("Rock beats scissors")
     print("Scissors beats paper")
-    print("Paper beats rock\n")
+    print("Paper beats rock")
     # Set the score to 0 - 0
     score = [0, 0]
     SHEET.worksheet(DATA_STR).append_row(score)
@@ -45,8 +48,9 @@ def get_user_answer():
     """
     Ask the user to make a choice and validates it
     """
+    print("============================================")
     global USER
-    choice = input('Please choose from rock, paper, or scissors: ')
+    choice = input('Please choose from rock, paper, or scissors: \n')
     choice_strip = choice.strip()
     USER = choice_strip.lower()
     if USER == "rock" or USER == "paper" or USER == "scissors":
@@ -73,41 +77,56 @@ def play_game(USER, COMPUTER):
     """
     if USER == COMPUTER:
         print()
+        print("============================================")
         print("It's a tie")
+        print("============================================")
         print()
         calculate_score(DATA_STR)
+        print("============================================")
         play_again()
 
     if (USER == 'rock' and COMPUTER == 'scissors'):
         print()
+        print("============================================")
         print('You won')
+        print("============================================")
         print()
         increment_user_score(DATA_STR)
         calculate_score(DATA_STR)
+        print("============================================")
         play_again()
 
     elif (USER == 'paper' and COMPUTER == 'rock'):
         print()
+        print("============================================")
         print('You won')
+        print("============================================")
         print()
         increment_user_score(DATA_STR)
         calculate_score(DATA_STR)
+        print("============================================")
         play_again()
 
     elif (USER == 'scissors' and COMPUTER == 'paper'):
         print()
+        print("============================================")
         print('You won')
+        print("============================================")
         print()
         increment_user_score(DATA_STR)
         calculate_score(DATA_STR)
+        print("============================================")
         play_again()
 
     else:
         print()
+        print("============================================")
         print('You lost')
+        print("============================================")
         print()
         increment_computer_score(DATA_STR)
         calculate_score(DATA_STR)
+        print("============================================")
         play_again()
 
 
@@ -119,10 +138,13 @@ def play_again():
     answer_strip = answer.strip()
     answer_lower = answer_strip.lower()
     if answer_lower == "n":
+        print("============================================")
         print(f'\nThanks for playing "rock paper scissors", {DATA_STR}. \n')
-        print("This app was developed as part of the")
-        print("3rd module of a Full Stack Software Development course")
+        print("============================================")
+        print("This app was developed as part of the 3rd module")
+        print("of the Full Stack Software Development course. \n")
         print("Find my Github repositories here: https://github.com/roman-gs")
+        print("============================================")
         quit()
 
     if answer_lower == "y":
